@@ -1,6 +1,22 @@
 import React from 'react';
 import request from 'superagent';
 
+const col = {
+  width: '50%',
+  display: 'inline-block'
+};
+
+const style = {
+  'col-left': col,
+  'col-right': Object.assign({
+    float: 'right'
+  }, col),
+  textarea: {
+    width: '100%',
+    height: '200px'
+  }
+};
+
 class Main extends React.Component {
 
   constructor(props) {
@@ -36,15 +52,20 @@ class Main extends React.Component {
 
   render() {
     return <div>
-      <div>
-        <textarea onChange={this.handleInputChange} value={this.state.query}></textarea>
-        <button onClick={this.handleSubmit}>Submit</button>
+      <div style={style['col-left']}>
+        <div>
+          <textarea style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>
+          <button onClick={this.handleSubmit}>Submit</button>
+        </div>
+        <ul>
+          {this.state.messages.map(function (m, i) {
+            return <li key={i}>{m}</li>;
+          })}
+        </ul>
       </div>
-      <ul>
-        {this.state.messages.map(function (m, i) {
-          return <li key={i}>{m}</li>;
-        })}
-      </ul>
+      <div style={style['col-right']}>
+        <textarea style={style.textarea} value={this.state.fixed}></textarea>
+      </div>
     </div>
   }
 }
