@@ -1,5 +1,5 @@
 const colBase = {
-  width: '50%',
+  width: '70%',
   display: 'block',
   margin: '0 auto',
   position: 'relative'
@@ -7,13 +7,14 @@ const colBase = {
 const style = {
   body: {
     fontFamily: 'Arial',
-    fontSize: '18px'
+    fontSize: '18px',
+    color: '#4c3c3c'
   },
   col: Object.assign({
     backgroundColor: '#1d1f21'
   }, colBase),
   colReport: Object.assign({
-    backgroundColor: 'white'
+    // backgroundColor: 'white'
   }, colBase),
   colReportTitle: {
     marginTop: '20px'
@@ -26,9 +27,10 @@ const style = {
     backgroundColor: 'transparent',
     color: 'white',
     border: 'none',
-    padding: '2px',
+    padding: '5px',
     fontSize: '18px',
-    fontFamily: 'Arial'
+    fontFamily: 'Arial',
+    resize: 'none'
   },
   highlight: {
     position: 'absolute',
@@ -39,7 +41,6 @@ const style = {
     height: 'initial !important',
     color: 'transparent',
     overflow: 'hidden',
-    transition: '100ms opacity',
     whiteSpace: 'pre-wrap',
     wordWrap: 'break-word'
   },
@@ -48,7 +49,7 @@ const style = {
     width: '100%',
     height: '100%',
     overflow: 'scroll',
-    padding: '2px'
+    padding: '5px'
   }
 };
 

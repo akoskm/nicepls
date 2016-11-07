@@ -3,6 +3,8 @@ import request from 'superagent';
 import highlight from '../utils/highlight';
 import style from '../style';
 import Issues from './Issues';
+import Footer from './Footer';
+import Header from './Header';
 
 class Main extends React.Component {
 
@@ -50,6 +52,7 @@ class Main extends React.Component {
 
   render() {
     return <div style={style.body}>
+      <Header />
       <div id='text-input' style={style.col}>
         <div style={style.highlight}>
           <div style={style.highlightInner} dangerouslySetInnerHTML={{ __html: this.state.formatted }}>
@@ -58,6 +61,7 @@ class Main extends React.Component {
         <textarea rows='5' style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>
       </div>
       <Issues messages={this.state.messages} />
+      <Footer />
     </div>
   }
 }

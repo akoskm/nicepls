@@ -5,7 +5,7 @@ const Issues = ({ messages }) => {
 
   var title;
   if (messages.length < 1) {
-    title = 'No issues';
+    title = 'No issues.';
   } else {
     title = 'Issues:';
   }
