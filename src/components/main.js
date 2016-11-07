@@ -2,6 +2,7 @@ import React from 'react';
 import request from 'superagent';
 import highlight from './highlight';
 import style from '../style';
+import Issues from './issues';
 
 class Main extends React.Component {
 
@@ -48,6 +49,7 @@ class Main extends React.Component {
   }
 
   render() {
+    console.log(Issues);
     return <div style={style.body}>
       <div id='text-input' style={style.col}>
         <div style={style.highlight}>
@@ -56,13 +58,7 @@ class Main extends React.Component {
         </div>
         <textarea rows='5' style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>
       </div>
-      <div id='summary' style={style.colReport}>
-        <ul>
-          {this.state.messages.map(function (m, i) {
-            return <li key={i}>{m}</li>;
-          })}
-        </ul>
-      </div>
+      <Issues messages={this.state.messages} />
     </div>
   }
 }
