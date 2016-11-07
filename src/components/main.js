@@ -55,7 +55,8 @@ class Main extends React.Component {
       <Header />
       <div id='text-input' style={style.col}>
         <div style={style.highlight}>
-          <div style={style.highlightInner} dangerouslySetInnerHTML={{ __html: this.state.formatted }}>
+          <div style={style.highlightInner}>
+            {this.state.formatted}
           </div>
         </div>
         <textarea rows='5' style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>

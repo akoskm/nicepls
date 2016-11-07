@@ -1,16 +1,15 @@
-import escapeMarkup from '../utils/escapeMarkup';
-import cssObjToStr from '../utils/cssObjToStr';
+import React from 'react';
 
-const offense = {
-  'background-color': '#ce4037',
-  'border-radius': '0.2em',
-  'display': 'inline-block',
-  'left': '-0.125em',
-  'top': '0',
-  'padding-right': '0.25em',
-  'margin-right': '-0.25em',
-  'position': 'relative',
-  'line-height': 1.2
+const style = {
+  backgroundColor: '#ce4037',
+  borderRadius: '0.2em',
+  display: 'inline-block',
+  left: '-0.125em',
+  top: '0',
+  paddingRight: '0.25em',
+  marginRight: '-0.25em',
+  position: 'relative',
+  lineHeight: 1.2
 };
 export default function (query, res) {
   var errs = res.body.map(function (m) {
@@ -36,11 +35,11 @@ export default function (query, res) {
   return errs.map((e, i) => {
     const beginning = query.substring(start, e.start);
     const word = query.substring(e.start, e.end);
-    const jsonStyle = cssObjToStr(offense);
-    let corrected = '<span style="' + jsonStyle + '">' + escapeMarkup(word) + '</span>';
+    let corrected = <span key={i}>
+      {beginning}
+      <span key={i} style={style}>{word}</span>
+    </span>;
     start = e.end;
-    return escapeMarkup(beginning) + corrected;
-  }).reduce((curr, prev) => {
-    return curr += prev;
-  }, '');
+    return corrected;
+  });
 }
