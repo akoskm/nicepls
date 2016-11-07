@@ -1,6 +1,6 @@
 import React from 'react';
 import request from 'superagent';
-import highlight from './highlight';
+import highlight from '../utils/highlight';
 import style from '../style';
 import Issues from './issues';
 
@@ -49,7 +49,6 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log(Issues);
     return <div style={style.body}>
       <div id='text-input' style={style.col}>
         <div style={style.highlight}>
