@@ -2,7 +2,7 @@ import React from 'react';
 import request from 'superagent';
 import highlight from '../utils/highlight';
 import style from '../style';
-import Issues from './issues';
+import Issues from './Issues';
 
 class Main extends React.Component {
 
