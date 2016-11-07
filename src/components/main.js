@@ -1,21 +1,7 @@
 import React from 'react';
 import request from 'superagent';
-
-const col = {
-  width: '50%',
-  display: 'inline-block'
-};
-
-const style = {
-  'col-left': col,
-  'col-right': Object.assign({
-    float: 'right'
-  }, col),
-  textarea: {
-    width: '100%',
-    height: '200px'
-  }
-};
+import highlight from './highlight';
+import style from '../style';
 
 class Main extends React.Component {
 
@@ -27,6 +13,7 @@ class Main extends React.Component {
 
     this.state = {
       query: '',
+      formatted: '',
       messages: []
     }
   }
@@ -35,36 +22,46 @@ class Main extends React.Component {
     this.setState({
       query: e.target.value
     });
+    let timeoutId = window.setTimeout(this.handleSubmit.bind(this), 300);
+    if (this.oldTimeoutId) {
+      window.clearTimeout(this.oldTimeoutId);
+    }
+    this.oldTimeoutId = timeoutId;
   }
 
-  handleSubmit(e) {
+  handleSubmit() {
+    const query = this.state.query.toString();
     request
       .post('/api/correct')
-      .send({ query: this.state.query.toString() })
+      .send({ query: query })
       .set('Accept', 'application/json')
       .end(function (err, res) {
         var messages = res.body.map(function (r) {
           return r.message;
         });
-        this.setState({ messages: messages });
+        const formatted = highlight(query, res);
+        this.setState({
+          messages: messages,
+          formatted: formatted
+        });
       }.bind(this));
   }
 
   render() {
-    return <div>
-      <div style={style['col-left']}>
-        <div>
-          <textarea style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>
-          <button onClick={this.handleSubmit}>Submit</button>
+    return <div style={style.body}>
+      <div id='text-input' style={style.col}>
+        <div style={style.highlight}>
+          <div style={style.highlightInner} dangerouslySetInnerHTML={{ __html: this.state.formatted }}>
+          </div>
         </div>
+        <textarea rows='5' style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>
+      </div>
+      <div id='summary' style={style.colReport}>
         <ul>
           {this.state.messages.map(function (m, i) {
             return <li key={i}>{m}</li>;
           })}
         </ul>
-      </div>
-      <div style={style['col-right']}>
-        <textarea style={style.textarea} value={this.state.fixed}></textarea>
       </div>
     </div>
   }
