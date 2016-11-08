@@ -11,7 +11,8 @@ const style = {
     color: '#4c3c3c'
   },
   col: Object.assign({
-    backgroundColor: '#1d1f21'
+    backgroundColor: '#1d1f21',
+    color: 'white'
   }, colBase),
   colReport: Object.assign({
     // backgroundColor: 'white'

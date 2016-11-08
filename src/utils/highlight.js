@@ -1,21 +1,16 @@
 import React from 'react';
+import HighlightLabel from '../components/HighlightLabel';
 
-const style = {
-  backgroundColor: '#ce4037',
-  borderRadius: '0.2em',
-  display: 'inline-block',
-  left: '-0.125em',
-  top: '0',
-  paddingRight: '0.25em',
-  marginRight: '-0.25em',
-  position: 'relative',
-  lineHeight: 1.2
+const handleOnHover = function(message) {
+  console.log(message);
 };
+
 export default function (query, res) {
   var errs = res.body.map(function (m) {
     return {
       start: m.location.start.offset,
-      end: m.location.end.offset
+      end: m.location.end.offset,
+      message: m.message
     };
   }).reduce((prev, curr) => {
     /**
@@ -32,14 +27,11 @@ export default function (query, res) {
     return prev;
   }, []);
   var start = 0;
-  return errs.map((e, i) => {
-    const beginning = query.substring(start, e.start);
-    const word = query.substring(e.start, e.end);
-    let corrected = <span key={i}>
-      {beginning}
-      <span key={i} style={style}>{word}</span>
-    </span>;
-    start = e.end;
+  return errs.map((error, i) => {
+    const beginning = query.substring(start, error.start);
+    const word = query.substring(error.start, error.end);
+    let corrected = <HighlightLabel key={i} {...{beginning, word, error, handleOnHover}}/>
+    start = error.end;
     return corrected;
   });
 }
