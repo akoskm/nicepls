@@ -1,13 +1,17 @@
 import React from 'react';
 import style from '../style';
 
-const Issues = ({ messages }) => {
+const Issues = ({ messages, checking }) => {
 
   var title;
-  if (messages.length < 1) {
-    title = 'No issues.';
+  if (!!checking) {
+    title = 'Checking...';
   } else {
-    title = 'Issues:';
+    if (messages.length < 1) {
+      title = 'No issues.';
+    } else {
+      title = 'Issues:';
+    }
   }
 
   return <div id='summary' style={style.colReport}>
