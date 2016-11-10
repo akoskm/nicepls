@@ -7,11 +7,10 @@ const footer = {
 
 const style = {
   footerContainer: {
-    position: 'absolute',
     right: 0,
     bottom: 0,
     left: 0,
-    padding: '1rem',
+    padding: '15px',
     backgroundColor: 'seashell',
     textAlign: 'center'
   },

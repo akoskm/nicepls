@@ -52,16 +52,19 @@ class Main extends React.Component {
 
   render() {
     return <div style={style.body}>
-      <Header />
-      <div id='text-input' style={style.col}>
-        <div style={style.highlight}>
-          <div style={style.highlightInner}>
-            {this.state.formatted}
+      <div style={style.wrapper}>
+        <Header />
+        <div id='text-input' style={style.col}>
+          <div style={style.highlight}>
+            <div style={style.highlightInner}>
+              {this.state.formatted}
+            </div>
           </div>
+          <textarea rows='5' style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>
         </div>
-        <textarea rows='5' style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>
+        <Issues messages={this.state.messages} />
+        <div style={style.push}></div>
       </div>
-      <Issues messages={this.state.messages} />
       <Footer />
     </div>
   }

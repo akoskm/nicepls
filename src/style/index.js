@@ -10,6 +10,14 @@ const style = {
     fontSize: '18px',
     color: '#524251'
   },
+  wrapper: {
+    minHeight: '100%',
+    height: 'auto !important',
+    margin: '0 auto -63px'
+  },
+  push: {
+    height: '63px'
+  },
   col: Object.assign({
     backgroundColor: '#1d1f21',
     color: 'white'
@@ -31,7 +39,8 @@ const style = {
     padding: '5px',
     fontSize: '18px',
     fontFamily: 'Arial',
-    resize: 'none'
+    resize: 'none',
+    outline: 'none'
   },
   highlight: {
     position: 'absolute',
