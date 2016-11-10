@@ -32,7 +32,7 @@ const Footer = () =>
       Crafted by <a href='http://akoskm.com'>@akoskm</a>.
     </div>
     <div style={style.footer2}>
-      Source available on <a href='https://github.com/akoskm/nicepls'>GitHub</a>.
+      Code available on <a href='https://github.com/akoskm/nicepls'>GitHub</a>.
     </div>
   </div>
 
