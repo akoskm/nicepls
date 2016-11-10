@@ -8,7 +8,7 @@ const style = {
   body: {
     fontFamily: 'Arial',
     fontSize: '18px',
-    color: '#524251'
+    color: '#514a54'
   },
   wrapper: {
     minHeight: '100%',
@@ -19,7 +19,7 @@ const style = {
     height: '63px'
   },
   col: Object.assign({
-    backgroundColor: '#1d1f21',
+    backgroundColor: '#514a54', //#644f6d
     color: 'white'
   }, colBase),
   colReport: Object.assign({
