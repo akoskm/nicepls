@@ -7,8 +7,9 @@ const style = {
   header: {
     position: 'relative',
     textAlign: 'center',
-    fontSize:  '25px',
-    padding: '15px'
+    fontSize:  '45px',
+    padding: '15px',
+    fontWeight: 'bold'
   }
 }
 
