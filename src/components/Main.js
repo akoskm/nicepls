@@ -15,11 +15,15 @@ class Main extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
 
     this.state = {
-      query: '',
+      query: 'The manager is responsible for his clients.',
       formatted: '',
       messages: [],
       checking: false
     }
+  }
+
+  componentDidMount() {
+    this.handleSubmit();
   }
 
   handleInputChange(e) {
