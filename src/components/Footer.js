@@ -8,11 +8,15 @@ const footer = {
 const style = {
   footerContainer: {
     position: 'absolute',
-    bottom: '5px',
-    width: '100%'
+    right: 0,
+    bottom: 0,
+    left: 0,
+    padding: '1rem',
+    backgroundColor: 'seashell',
+    textAlign: 'center'
   },
   footer1: Object.assign({
-    fontSize:  '15px'
+    fontSize:  '14px'
   }, footer),
   footer2: Object.assign({
     fontSize:  '13px'
@@ -26,10 +30,10 @@ const style = {
 const Footer = () => 
   <div style={style.footerContainer}>
     <div style={style.footer1}>
-      Footer text
+      Crafted by <a href='http://akoskm.com'>@akoskm</a>.
     </div>
     <div style={style.footer2}>
-      More footer text
+      Source available on <a href='https://github.com/akoskm/nicepls'>GitHub</a>.
     </div>
   </div>
 

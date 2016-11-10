@@ -7,8 +7,9 @@ const style = {
   top: '0',
   position: 'relative',
   lineHeight: 1.2,
-  zIndex: 3,
-  color: 'white'
+  zIndex: 1,
+  color: 'white',
+  marginLeft: '-0.05px'
 };
 
 const HighlightLabel = ({beginning, word, error, handleOnHover}) => {

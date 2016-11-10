@@ -8,7 +8,7 @@ const style = {
     position: 'relative',
     textAlign: 'center',
     fontSize:  '25px',
-    margin: '15px'
+    padding: '15px'
   }
 }
 

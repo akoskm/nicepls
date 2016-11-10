@@ -8,7 +8,7 @@ const style = {
   body: {
     fontFamily: 'Arial',
     fontSize: '18px',
-    color: '#4c3c3c'
+    color: '#524251'
   },
   col: Object.assign({
     backgroundColor: '#1d1f21',
