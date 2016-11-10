@@ -17,13 +17,15 @@ class Main extends React.Component {
     this.state = {
       query: '',
       formatted: '',
-      messages: []
+      messages: [],
+      checking: false
     }
   }
 
   handleInputChange(e) {
     this.setState({
-      query: e.target.value
+      query: e.target.value,
+      checking: true
     });
     let timeoutId = window.setTimeout(this.handleSubmit.bind(this), 300);
     if (this.oldTimeoutId) {
@@ -45,7 +47,8 @@ class Main extends React.Component {
         const formatted = highlight(query, res);
         this.setState({
           messages: messages,
-          formatted: formatted
+          formatted: formatted,
+          checking: false
         });
       }.bind(this));
   }
@@ -60,9 +63,18 @@ class Main extends React.Component {
               {this.state.formatted}
             </div>
           </div>
-          <textarea rows='5' style={style.textarea} onChange={this.handleInputChange} value={this.state.query}></textarea>
+          <textarea
+            rows='5'
+            style={style.textarea}
+            onChange={this.handleInputChange}
+            value={this.state.query}
+            autoFocus
+          ></textarea>
         </div>
-        <Issues messages={this.state.messages} />
+        <Issues
+          messages={this.state.messages}
+          checking={this.state.checking}
+        />
         <div style={style.push}></div>
       </div>
       <Footer />
