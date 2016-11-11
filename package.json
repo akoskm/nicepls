@@ -13,7 +13,9 @@
     "superagent": "^2.3.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "build": "NODE_ENV=production webpack --config webpack-production.config.js -p",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "node server.js"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

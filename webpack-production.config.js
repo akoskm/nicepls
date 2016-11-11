@@ -1,16 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
+var config = require('./config');
 
-module.exports = {
+module.exports = Object.assign({}, config, {
   devtool: 'cheap-module-source-map',
   entry: [
     './src/app'
   ],
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/static/',
-    filename: 'bundle.js'
-  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -20,13 +16,5 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       minimize: true
     })
-  ],
-  module: {
-    loaders: [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        include: path.join(__dirname, 'src'),
-        loaders: ['babel']
-    }]
-  }
-}
+  ]
+});

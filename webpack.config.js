@@ -1,28 +1,16 @@
 var path = require('path');
 var webpack = require('webpack');
+var config = require('./config');
 
-module.exports = {
+module.exports = Object.assign({}, config, {
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:' + config.DEV_PORT,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
     './src/app'
   ],
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/static/',
-    filename: 'bundle.js'
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
-  module: {
-    loaders: [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        include: path.join(__dirname, 'src'),
-        loaders: ['babel']
-    }]
-  }
-}
+});
