@@ -4,10 +4,12 @@ var config = require('./webpack.config');
 var bodyParser = require('body-parser');
 var express = require('express');
 var alex = require('alex');
-
+var path = require('path');
 var app = express();
-app.use(bodyParser.json());
+var production = app.get('env') === 'production';
+var index = path.resolve('./index.html');
 
+app.use(bodyParser.json());
 app.post('/api/correct', function (req, res) {
   var query = req.body.query;
   var messages = [];
@@ -17,27 +19,34 @@ app.post('/api/correct', function (req, res) {
   res.send(messages);
 });
 
-app.listen(3030, function () {
-  console.log('Example app listening on port 3030!')
-});
-
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true,
-  stats: {
-    colors: true
-  },
-  proxy: {
-    '/api/correct': {
-      target: 'http://localhost:3030',
-      secure: false
+if (production) {
+  app.use('/static', express.static('build'));
+  app.get('/', function (req, res) {
+    res.sendFile(index);
+  });
+} else {
+  new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    hot: true,
+    historyApiFallback: true,
+    stats: {
+      colors: true
+    },
+    proxy: {
+      '/api/correct': {
+        target: 'http://localhost:' + config.APP_PORT,
+        secure: false
+      }
     }
-  }
-}).listen(3000, 'localhost', function (err) {
-  if (err) {
-    console.log(err);
-  }
+  }).listen(config.DEV_PORT, 'localhost', function (err) {
+    if (err) {
+      console.log(err);
+    }
 
-  console.log('Listening at localhost:3000');
+    console.log('Listening at localhost:', config.DEV_PORT);
+  });
+}
+
+app.listen(config.APP_PORT, function () {
+  console.log('Example app listening on port', config.APP_PORT)
 });
