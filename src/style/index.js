@@ -48,7 +48,7 @@ const style = {
     transition: '100ms background-color',
     color: 'white',
     border: 'none',
-    padding: '5px',
+    margin: '5px 0px 3px 0px',
     fontSize: '18px',
     fontFamily: 'Arial',
     resize: 'none',
@@ -57,14 +57,16 @@ const style = {
   },
   highlight: {
     position: 'absolute',
-    left: '5px',
+    left: '2px',
     right: '5px',
-    top: '5px',
+    top: '7px',
     bottom: '5px',
     height: 'initial !important',
     color: 'transparent',
     overflow: 'hidden',
-    transition: '100ms opacity'
+    transition: '100ms opacity',
+    whiteSpace: 'pre-wrap',
+    wordWrap: 'break-word'
   },
   highlightInner: {
     boxSizing: 'border-box',
