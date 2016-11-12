@@ -77,7 +77,7 @@ class Main extends React.Component {
         <div id='text-input' style={style.colText}>
           <div style={div}>
             <div ref='highlightInner' style={style.highlightInner}>
-              <HighlightContainer {...{query, res}} />
+              <Highlight {...{query, res}} />
             </div>
           </div>
           <textarea

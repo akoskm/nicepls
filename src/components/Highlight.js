@@ -1,7 +1,7 @@
 import React from 'react';
 import HighlightLabel from '../components/HighlightLabel';
 
-const HighlightContainer = ({query, res}) => {
+const Highlight = ({query, res}) => {
   if (!res) {
     return <div />
   }
@@ -44,4 +44,4 @@ const HighlightContainer = ({query, res}) => {
   return <div>{result}</div>;
 }
 
-export default HighlightContainer;
+export default Highlight;
