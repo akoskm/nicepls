@@ -1,7 +1,7 @@
 import React from 'react';
 import request from 'superagent';
 import highlight from '../utils/highlight';
-import style from '../style';
+import style1 from '../style';
 import Issues from './Issues';
 import Footer from './Footer';
 import Header from './Header';
@@ -11,6 +11,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleScroll = this.handleScroll.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
 
@@ -18,8 +19,10 @@ class Main extends React.Component {
       query: 'The manager is responsible for his clients.',
       formatted: '',
       messages: [],
-      checking: false
-    }
+      checking: false,
+      opacity: 1,
+      scrollTop: 0
+    };
   }
 
   componentDidMount() {
@@ -54,25 +57,37 @@ class Main extends React.Component {
           formatted: formatted,
           checking: false
         });
+        this.handleScroll();
       }.bind(this));
   }
 
+  handleScroll() {
+    this.refs.highlightInner.scrollTop = this.refs.textArea.scrollTop;
+  }
+
   render() {
+    const style = style1;
+    const div = Object.assign({}, style.highlight, {
+      opacity: this.state.opacity,
+      height: 'initial !important'
+    });
     return <div style={style.body}>
       <div style={style.wrapper}>
         <Header />
         <div id='text-input' style={style.colText}>
-          <div style={style.highlight}>
-            <div style={style.highlightInner}>
+          <div style={div}>
+            <div ref='highlightInner' style={style.highlightInner}>
               {this.state.formatted}
             </div>
           </div>
           <textarea
+            ref='textArea'
             rows='5'
             style={style.textarea}
             onChange={this.handleInputChange}
             value={this.state.query}
             autoFocus
+            onScroll={this.handleScroll}
           ></textarea>
         </div>
         <Issues

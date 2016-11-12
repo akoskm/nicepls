@@ -45,32 +45,33 @@ const style = {
     zIndex: 1,
     position: 'relative',
     backgroundColor: 'transparent',
+    transition: '100ms background-color',
     color: 'white',
     border: 'none',
     padding: '5px',
     fontSize: '18px',
     fontFamily: 'Arial',
     resize: 'none',
-    outline: 'none'
+    outline: 'none',
+    overflow: 'auto'
   },
   highlight: {
     position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
+    left: '5px',
+    right: '5px',
+    top: '5px',
+    bottom: '5px',
     height: 'initial !important',
     color: 'transparent',
     overflow: 'hidden',
-    whiteSpace: 'pre-wrap',
-    wordWrap: 'break-word'
+    transition: '100ms opacity'
   },
   highlightInner: {
     boxSizing: 'border-box',
     width: '100%',
     height: '100%',
-    overflow: 'scroll',
-    padding: '5px'
+    overflow: 'hidden',
+    lineHeight: 1.2,
   }
 };
 
