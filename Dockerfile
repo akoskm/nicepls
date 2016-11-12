@@ -10,4 +10,4 @@ USER app
 WORKDIR $HOME/nicepls
 
 EXPOSE 3030
-CMD [ "git" "pull", "./startup.sh" ]
+CMD [ "sh", "-c", "git pull && chmod +x ./startup.sh && ./startup.sh" ]
