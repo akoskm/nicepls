@@ -1,10 +1,6 @@
 import React from 'react';
 import HighlightLabel from '../components/HighlightLabel';
 
-const handleOnHover = function(message) {
-  console.log(message);
-};
-
 export default function (query, res) {
   var errs = res.body.map(function (m) {
     return {
@@ -27,11 +23,19 @@ export default function (query, res) {
     return prev;
   }, []);
   var start = 0;
-  return errs.map((error, i) => {
+  var result = errs.map((error, i) => {
     const beginning = query.substring(start, error.start);
     const word = query.substring(error.start, error.end);
-    let corrected = <HighlightLabel key={i} {...{beginning, word, error, handleOnHover}}/>
+    let corrected = <HighlightLabel key={i} {...{beginning, word, error}}/>
     start = error.end;
     return corrected;
   });
+  /**
+   * create a label for any text that is left after the last error
+   */
+  if (start < query.length) {
+    const beginning = query.substring(start, query.length);
+    result.push(<HighlightLabel key={query.length} {...{beginning}}/>);
+  }
+  return result;
 }
