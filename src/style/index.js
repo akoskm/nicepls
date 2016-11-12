@@ -1,7 +1,6 @@
 const colBase = {
-  width: '70%',
+  width: '100%',
   display: 'block',
-  margin: '0 auto',
   position: 'relative'
 };
 const style = {
@@ -13,7 +12,7 @@ const style = {
   wrapper: {
     minHeight: '100%',
     height: 'auto !important',
-    margin: '0 auto -63px'
+    margin: '0px 25px -63px'
   },
   header: {
     position: 'relative',
