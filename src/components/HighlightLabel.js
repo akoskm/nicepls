@@ -8,20 +8,21 @@ const style = {
   position: 'relative',
   lineHeight: 1.2,
   zIndex: 1,
-  color: 'white',
-  // marginLeft: '-0.9px'
+  color: 'white'
 };
 
-const HighlightLabel = ({beginning, word, error, handleOnHover}) => {
+const HighlightLabel = ({beginning, word, error}) => {
 
-  const onHover = function () {
-    handleOnHover(error.message);
+  let mark;
+
+  if (word) {
+    mark = <span style={style}>{word}</span>;
   }
 
   return <span>
     {beginning}
-    <span style={style} onMouseEnter={onHover}>{word}</span>
-  </span>
+    {mark}
+  </span>;
 }
 
 export default HighlightLabel;
