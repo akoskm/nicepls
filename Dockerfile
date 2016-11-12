@@ -8,8 +8,6 @@ RUN chown -R app:app $HOME/*
 
 USER app
 WORKDIR $HOME/nicepls
-RUN npm install
-RUN npm run build
 
 EXPOSE 3030
-CMD [ "npm", "start" ]
+CMD [ "git" "pull", "./startup.sh" ]
