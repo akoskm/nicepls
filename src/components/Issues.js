@@ -14,7 +14,7 @@ const Issues = ({ messages, checking }) => {
     }
   }
 
-  return <div id='summary' style={style.colReport}>
+  return <div id='summary' style={style.colDefault}>
     <div style={style.colReportTitle}>{title}</div>
     <ul>
       {messages.map(function (m, i) {

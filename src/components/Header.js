@@ -1,22 +1,14 @@
 import React from 'react';
-
-const style = {
-  headerContainer: {
-    width: '100%'
-  },
-  header: {
-    position: 'relative',
-    textAlign: 'center',
-    fontSize:  '45px',
-    padding: '15px',
-    fontWeight: 'bold'
-  }
-}
+import style from '../style';
 
 const Header = (props) =>
-  <div style={style.headerContainer}>
+  <div style={style.colDefault}>
     <div style={style.header}>
       nicepls
+    </div>
+    <div style={style.intro}>
+      nicepls mimics the original alexjs <a href='http://alexjs.com/#demo'>online demo</a>,
+      read the motivation <a href='https://github.com/akoskm/nicepls#motivation'>here</a>.
     </div>
   </div>
 

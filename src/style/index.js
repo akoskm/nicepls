@@ -15,14 +15,26 @@ const style = {
     height: 'auto !important',
     margin: '0 auto -63px'
   },
+  header: {
+    position: 'relative',
+    textAlign: 'center',
+    fontSize:  '45px',
+    padding: '15px',
+    fontWeight: 'bold'
+  },
+  intro: {
+    textAlign: 'center',
+    paddingBottom: '20px',
+    fontSize: '15px'
+  },
   push: {
     height: '63px'
   },
-  col: Object.assign({
+  colText: Object.assign({
     backgroundColor: '#514a54', //#644f6d
     color: 'white'
   }, colBase),
-  colReport: Object.assign({
+  colDefault: Object.assign({
     // backgroundColor: 'white'
   }, colBase),
   colReportTitle: {

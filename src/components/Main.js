@@ -61,7 +61,7 @@ class Main extends React.Component {
     return <div style={style.body}>
       <div style={style.wrapper}>
         <Header />
-        <div id='text-input' style={style.col}>
+        <div id='text-input' style={style.colText}>
           <div style={style.highlight}>
             <div style={style.highlightInner}>
               {this.state.formatted}
