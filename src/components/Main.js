@@ -4,7 +4,7 @@ import style1 from '../style';
 import Issues from './Issues';
 import Footer from './Footer';
 import Header from './Header';
-import HighlightContainer from './HighlightContainer';
+import Highlight from './Highlight';
 
 class Main extends React.Component {
 
@@ -46,8 +46,8 @@ class Main extends React.Component {
       .post('/api/correct')
       .send({ query: query })
       .set('Accept', 'application/json')
-      .end(function (err, res) {
-        var messages = res.body.map(function (r) {
+      .end((err, res) => {
+        var messages = res.body.map((r) => {
           return r.message;
         });
         this.setState({
@@ -56,7 +56,7 @@ class Main extends React.Component {
           res
         });
         this.handleScroll();
-      }.bind(this));
+      });
   }
 
   handleScroll() {
