@@ -1,7 +1,10 @@
 import React from 'react';
 import HighlightLabel from '../components/HighlightLabel';
 
-export default function (query, res) {
+const HighlightContainer = ({query, res}) => {
+  if (!res) {
+    return <div />
+  }
   var errs = res.body.map(function (m) {
     return {
       start: m.location.start.offset,
@@ -22,6 +25,7 @@ export default function (query, res) {
     }
     return prev;
   }, []);
+
   var start = 0;
   var result = errs.map((error, i) => {
     const beginning = query.substring(start, error.start);
@@ -37,5 +41,7 @@ export default function (query, res) {
     const beginning = query.substring(start, query.length);
     result.push(<HighlightLabel key={query.length} {...{beginning}}/>);
   }
-  return result;
+  return <div>{result}</div>;
 }
+
+export default HighlightContainer;

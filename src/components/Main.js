@@ -1,10 +1,10 @@
 import React from 'react';
 import request from 'superagent';
-import highlight from '../utils/highlight';
 import style1 from '../style';
 import Issues from './Issues';
 import Footer from './Footer';
 import Header from './Header';
+import HighlightContainer from './HighlightContainer';
 
 class Main extends React.Component {
 
@@ -17,7 +17,6 @@ class Main extends React.Component {
 
     this.state = {
       query: 'The manager is responsible for his clients.',
-      formatted: '',
       messages: [],
       checking: false,
       opacity: 1,
@@ -51,11 +50,10 @@ class Main extends React.Component {
         var messages = res.body.map(function (r) {
           return r.message;
         });
-        const formatted = highlight(query, res);
         this.setState({
-          messages: messages,
-          formatted: formatted,
-          checking: false
+          checking: false,
+          messages,
+          res
         });
         this.handleScroll();
       }.bind(this));
@@ -71,13 +69,15 @@ class Main extends React.Component {
       opacity: this.state.opacity,
       height: 'initial !important'
     });
+    const query = this.state.query;
+    const res = this.state.res;
     return <div style={style.body}>
       <div style={style.wrapper}>
         <Header />
         <div id='text-input' style={style.colText}>
           <div style={div}>
             <div ref='highlightInner' style={style.highlightInner}>
-              {this.state.formatted}
+              <HighlightContainer {...{query, res}} />
             </div>
           </div>
           <textarea
