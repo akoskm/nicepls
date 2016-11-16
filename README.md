@@ -6,14 +6,24 @@ Installation
 ---
 ```
 npm install
-npm start
+npm run build
+jekyll serve -w
 ```
 
-Open `http://localhost:3000/` in your browser.
+Open `http://localhost:4000/` in your browser.
+
+Development
+---
+```
+npm run build
+jekyll serve -w // restart jekyll
+```
+*This is currently cumbersome since you have to rebuild the bundle after every change,
+but I'm already working on a refined process which will support hot reloading of React component*
 
 Demo
 ---
-Coming soon!
+[http://akoskm.com/nicepls-react/](http://akoskm.com/nicepls-react/)
 
 Motivation
 ---

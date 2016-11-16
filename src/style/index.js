@@ -60,7 +60,7 @@ const style = {
     position: 'absolute',
     left: '2px',
     right: '5px',
-    top: '8px',
+    top: '7px',
     bottom: '8px',
     height: 'initial !important',
     color: 'transparent',
