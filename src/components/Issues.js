@@ -18,7 +18,7 @@ const Issues = ({ messages, checking }) => {
     <div style={style.colReportTitle}>{title}</div>
     <ul>
       {messages.map(function (m, i) {
-        return <li key={i}>{m}</li>;
+        return <li key={i}>{m.message}</li>;
       })}
     </ul>
   </div>

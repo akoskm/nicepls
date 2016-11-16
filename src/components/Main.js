@@ -1,6 +1,8 @@
+import alex from 'alex';
 import React from 'react';
 import request from 'superagent';
-import style1 from '../style';
+
+import style from '../style';
 import Issues from './Issues';
 import Footer from './Footer';
 import Header from './Header';
@@ -42,21 +44,18 @@ class Main extends React.Component {
 
   handleSubmit() {
     const query = this.state.query.toString();
-    request
-      .post('/api/correct')
-      .send({ query: query })
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        var messages = res.body.map((r) => {
-          return r.message;
-        });
-        this.setState({
-          checking: false,
-          messages,
-          res
-        });
-        this.handleScroll();
-      });
+    const messages = alex(query).messages;
+    this.setState({
+      checking: false,
+      messages: messages.map((m) => {
+        return {
+          start: m.location.start.offset,
+          end: m.location.end.offset,
+          message: m.message
+        };
+      })
+    });
+    this.handleScroll();
   }
 
   handleScroll() {
@@ -64,20 +63,20 @@ class Main extends React.Component {
   }
 
   render() {
-    const style = style1;
     const div = Object.assign({}, style.highlight, {
       opacity: this.state.opacity,
       height: 'initial !important'
     });
     const query = this.state.query;
-    const res = this.state.res;
+    const messages = this.state.messages;
+    const checking = this.state.checking;
     return <div style={style.body}>
       <div style={style.wrapper}>
         <Header />
         <div id='text-input' style={style.colText}>
           <div style={div}>
             <div ref='highlightInner' style={style.highlightInner}>
-              <Highlight {...{query, res}} />
+              <Highlight {...{query, messages}} />
             </div>
           </div>
           <textarea
@@ -90,10 +89,7 @@ class Main extends React.Component {
             onScroll={this.handleScroll}
           ></textarea>
         </div>
-        <Issues
-          messages={this.state.messages}
-          checking={this.state.checking}
-        />
+        <Issues {...{messages, checking}} />
         <div style={style.push}></div>
       </div>
       <Footer />

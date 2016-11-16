@@ -8,13 +8,13 @@
     "alex": "^4.0.1",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "json-loader": "^0.5.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "superagent": "^2.3.0"
   },
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack-production.config.js -p",
-    "start": "NODE_ENV=production node server.js",
     "dev": "node server.js"
   },
   "devDependencies": {

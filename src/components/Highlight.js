@@ -1,17 +1,11 @@
 import React from 'react';
 import HighlightLabel from '../components/HighlightLabel';
 
-const Highlight = ({query, res}) => {
-  if (!res) {
-    return <div />
+const Highlight = ({query, messages}) => {
+  if (!messages) {
+    return <div />;
   }
-  var errs = res.body.map(function (m) {
-    return {
-      start: m.location.start.offset,
-      end: m.location.end.offset,
-      message: m.message
-    };
-  }).reduce((prev, curr) => {
+  var errs = messages.reduce((prev, curr) => {
     /**
      * Some words yield multiple messages for the same position.
      * This reduce should remove the duplicate position.
