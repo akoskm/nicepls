@@ -7,7 +7,8 @@ const style = {
   body: {
     fontFamily: 'Arial',
     fontSize: '18px',
-    color: '#514a54'
+    color: '#514a54',
+    height: '100%'
   },
   wrapper: {
     minHeight: '100%',
