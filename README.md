@@ -23,7 +23,7 @@ but I'm already working on a refined process which will support hot reloading of
 
 Demo
 ---
-[http://akoskm.com/nicepls-react/](http://akoskm.com/nicepls-react/)
+[http://akoskm.com/nicepls/](http://akoskm.com/nicepls/)
 
 Motivation
 ---
