@@ -2,10 +2,9 @@ var path = require('path');
 
 module.exports = {
   DEV_PORT: 3000,
-  APP_PORT: 3030,
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/static/',
+    publicPath: '/build/',
     filename: 'bundle.js'
   },
   module: {
