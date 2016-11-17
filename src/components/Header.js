@@ -7,9 +7,9 @@ const Header = (props) =>
       nicepls
     </div>
     <div style={style.intro}>
-      nicepls detects insensitive words, explains the errors and suggests possible alternatives.
-      It mimics the original alexjs <a href='http://alexjs.com/#demo'>online demo</a>,
-      read the motivation <a href='https://github.com/akoskm/nicepls#motivation'>here</a>.
+      <p>nicepls uses <a href='https://github.com/wooorm/alex'>alexjs</a> to detect insensitive, inconsiderate words and explain the errors and suggest possible alternatives.</p>
+      <p>It mimics the original alexjs <a href='http://alexjs.com/#demo'>online demo</a>,
+      read the motivation <a href='https://github.com/akoskm/nicepls#motivation'>here</a>.</p>
     </div>
   </div>
 
