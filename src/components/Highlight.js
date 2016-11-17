@@ -5,12 +5,12 @@ const Highlight = ({query, messages}) => {
   if (!messages) {
     return <div />;
   }
-  var errs = messages.reduce((prev, curr) => {
+  const errs = messages.reduce((prev, curr) => {
     /**
      * Some words yield multiple messages for the same position.
      * This reduce should remove the duplicate position.
      */ 
-    var present = prev.find((p) => {
+    const present = prev.find((p) => {
       return p.start === curr.start &&
         p.end === curr.end;
     });
@@ -20,8 +20,8 @@ const Highlight = ({query, messages}) => {
     return prev;
   }, []);
 
-  var start = 0;
-  var result = errs.map((error, i) => {
+  let start = 0;
+  let result = errs.map((error, i) => {
     const beginning = query.substring(start, error.start);
     const word = query.substring(error.start, error.end);
     let corrected = <HighlightLabel key={i} {...{beginning, word, error}}/>
@@ -32,8 +32,8 @@ const Highlight = ({query, messages}) => {
    * create a label for any text that is left after the last error
    */
   if (start < query.length) {
-    const beginning = query.substring(start, query.length);
-    result.push(<HighlightLabel key={query.length} {...{beginning}}/>);
+    let rest = query.substring(start, query.length);
+    result.push(<HighlightLabel key={query.length} {...{rest}}/>);
   }
   return <div>{result}</div>;
 }

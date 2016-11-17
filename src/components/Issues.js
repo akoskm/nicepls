@@ -3,7 +3,7 @@ import style from '../style';
 
 const Issues = ({ messages, checking }) => {
 
-  var title;
+  let title;
   if (!!checking) {
     title = 'Checking...';
   } else {
